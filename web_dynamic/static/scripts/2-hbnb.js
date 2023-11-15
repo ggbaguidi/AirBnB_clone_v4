@@ -19,4 +19,13 @@ $(document).ready(function () {
     $('div.amenities > h4').text(output);
     myList = [];
   });
+
+  const apiStatus = $('DIV#api_status');
+  $.ajax('http://0.0.0.0:5001/api/v1/status/').done(function (data) {
+    if (data.status === 'OK') {
+      apiStatus.addClass('available');
+    } else {
+      apiStatus.removeClass('available');
+    }
+  });
 });
